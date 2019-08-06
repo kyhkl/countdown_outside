@@ -52,7 +52,7 @@ static void timeout(void* parameter)
 //					countdown.cur_num--;
 //				}
 				
-		if(countdown.sync>=3)
+		if(countdown.sync>=4)
 				{
 					countdown.cur_mode=4;
 					countdown.cur_num--;
@@ -245,10 +245,10 @@ void dispaly(rt_uint8_t color)
 {			
 			rt_uint8_t i = 0 ;
 			rt_pin_write(LAT_PIN, PIN_LOW);	
-			rt_hw_us_delay(2);
+//			rt_hw_us_delay(2);
 			for(i=0;i<16;i++)
 			bank32(up[i],down[i],color);
-			rt_hw_us_delay(2);
+//			rt_hw_us_delay(2);
 			rt_pin_write(LAT_PIN, PIN_HIGH);
 			rt_pin_write(OE_PIN, PIN_LOW);	
 }
@@ -316,7 +316,7 @@ static void Set_LED_Display(rt_uint16_t value,rt_uint8_t color,rt_uint8_t blind)
 	if(0==blind)
 	{
 		rt_pin_write(OE_PIN, 0);
-		rt_thread_delay(RT_TICK_PER_SECOND/5);
+		rt_thread_delay(RT_TICK_PER_SECOND/20);
 	}
 	else
 	{
