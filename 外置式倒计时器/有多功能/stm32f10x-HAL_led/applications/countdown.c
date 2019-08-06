@@ -31,7 +31,7 @@ static void timeout(void* parameter)
 	if(1 == countdown_type)
 	{
 		
-		if((countdown.sync==5)&&(countdown.cur_num>=2))
+		if((countdown.sync==10)&&(countdown.cur_num>=2))
 			{
 					countdown.cur_num--;
 					countdown.sync = 0;
@@ -52,7 +52,7 @@ static void timeout(void* parameter)
 //					countdown.cur_num--;
 //				}
 				
-		if(countdown.sync>=4)
+		if(countdown.sync>=8)
 				{
 					countdown.cur_mode=4;
 					countdown.cur_num--;
@@ -69,7 +69,7 @@ int rt_timer_count_init(void)
     rt_timer_init(&timer_count, "timer1",  /* 定时器名字是 timer_count */
                     timeout, /* 超时时回调的处理函数 */
                     RT_NULL, /* 超时函数的入口参数 */
-                    20, /* 定时长度，以OS Tick为单位，即10个OS Tick */
+                    10, /* 定时长度，以OS Tick为单位，即10个OS Tick */
                     RT_TIMER_FLAG_PERIODIC); /* 周期性定时器 */
 		rt_timer_start(&timer_count); 
     return 0;
